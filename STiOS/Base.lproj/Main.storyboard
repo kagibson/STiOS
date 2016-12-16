@@ -1,11 +1,11 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2657" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="gN8-Fe-g6b">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1212" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="gN8-Fe-g6b">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -23,7 +23,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ZL4-1R-Tj4" id="APU-OE-H61">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -55,10 +55,10 @@
             </objects>
             <point key="canvasLocation" x="-201" y="-707"/>
         </scene>
-        <!--View Controller-->
+        <!--Add New Patient View Controller-->
         <scene sceneID="GvV-tI-rMy">
             <objects>
-                <viewController id="hRA-dd-w0q" sceneMemberID="viewController">
+                <viewController id="hRA-dd-w0q" customClass="AddNewPatientViewController" customModule="STiOS" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Fer-5J-lfs"/>
                         <viewControllerLayoutGuide type="bottom" id="ght-dh-gtd"/>
@@ -105,7 +105,7 @@
                                 <rect key="frame" x="16" y="352" width="343" height="263"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <mutableString key="text">Some things to consider here, Is this the ONLY place where bluetooth is to be set up? I have a couple of design choices that we can approach, but I will need Christian to input the option he believes is the best way to go.                                       First, we can have this as an "option". This is under the assumption the user KNOWS that he/she has to set this up. We can add checks along the way to the "interface" portion to make sure that this eventually gets done or nothing will happen.                                                                              The other option is to make this a REQUIRED step before we can even reach the interface. The problem with this is that this can potentially be a "cut off" if a connection cannot be made.</mutableString>
+                                <string key="text">Some things to consider here, Is this the ONLY place where bluetooth is to be set up? I have a couple of design choices that we can approach, but I will need Christian to input the option he believes is the best way to go.                                       First, we can have this as an "option". This is under the assumption the user KNOWS that he/she has to set this up. We can add checks along the way to the "interface" portion to make sure that this eventually gets done or nothing will happen.                                                                              The other option is to make this a REQUIRED step before we can even reach the interface. The problem with this is that this can potentially be a "cut off" if a connection cannot be made.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
@@ -117,10 +117,10 @@
             </objects>
             <point key="canvasLocation" x="573.60000000000002" y="51.724137931034484"/>
         </scene>
-        <!--View Controller-->
+        <!--Sign In View Controller-->
         <scene sceneID="vL3-D4-iWt">
             <objects>
-                <viewController id="gN8-Fe-g6b" sceneMemberID="viewController">
+                <viewController id="gN8-Fe-g6b" customClass="SignInViewController" customModule="STiOS" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="6qL-ya-ckY"/>
                         <viewControllerLayoutGuide type="bottom" id="BuI-WR-EiR"/>
@@ -160,10 +160,10 @@
             </objects>
             <point key="canvasLocation" x="-956" y="-1517"/>
         </scene>
-        <!--View Controller-->
+        <!--Registration View Controller-->
         <scene sceneID="yqN-de-nR2">
             <objects>
-                <viewController id="g7j-G0-Dm6" sceneMemberID="viewController">
+                <viewController id="g7j-G0-Dm6" customClass="RegistrationViewController" customModule="STiOS" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="xXV-6P-d7J"/>
                         <viewControllerLayoutGuide type="bottom" id="PVp-En-rTf"/>
@@ -224,7 +224,7 @@
                                 <rect key="frame" x="16" y="28" width="343" height="582"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <mutableString key="text">December 8, 2016 (Kristian)                                    This one is a little "up-in-the-air", but the purpose of this tab controller is the "Interface" portion of the app. The tabs are as follows.                                             We will need one tab for the graphical stuff (the SCNView),                                                                       one for (possibly) any statistics and data to be presented. I'm not sure if there will be enough space for that on the SCNView but that is to still be researched,                                                            one for recorded logged data (maybe?),                         and another for an exercise selection. Of course, these are up for discussion but I'll make them here incase.                                                                             Please excuse the messiness of the prototype as I am trying to remember how this works. I've taken a break from doing this, but I'm sure It'll come back to me :)</mutableString>
+                                <string key="text">December 8, 2016 (Kristian)                                    This one is a little "up-in-the-air", but the purpose of this tab controller is the "Interface" portion of the app. The tabs are as follows.                                             We will need one tab for the graphical stuff (the SCNView),                                                                       one for (possibly) any statistics and data to be presented. I'm not sure if there will be enough space for that on the SCNView but that is to still be researched,                                                            one for recorded logged data (maybe?),                         and another for an exercise selection. Of course, these are up for discussion but I'll make them here incase.                                                                             Please excuse the messiness of the prototype as I am trying to remember how this works. I've taken a break from doing this, but I'm sure It'll come back to me :)</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>

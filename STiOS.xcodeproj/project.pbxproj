@@ -18,6 +18,11 @@
 		484DACF11DFA793E000EFFB6 /* STiOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 484DACF01DFA793E000EFFB6 /* STiOSUITests.swift */; };
 		61B4E72D1C2E8CA845C0AFC8 /* Pods_STiOSUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D9BAEE5F2AEA66E963EA66C /* Pods_STiOSUITests.framework */; };
 		80C51E4D4E0FD4C194A27A93 /* Pods_STiOSTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A48305B080F999B74209310 /* Pods_STiOSTests.framework */; };
+		DD31DF9C1E0397C400D9F112 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DD31DF9B1E0397C400D9F112 /* GoogleService-Info.plist */; };
+		DD31DFA11E039B6F00D9F112 /* AddNewPatientViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD31DF9D1E039B6F00D9F112 /* AddNewPatientViewController.swift */; };
+		DD31DFA21E039B6F00D9F112 /* PatientListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD31DF9E1E039B6F00D9F112 /* PatientListViewController.swift */; };
+		DD31DFA31E039B6F00D9F112 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD31DF9F1E039B6F00D9F112 /* RegistrationViewController.swift */; };
+		DD31DFA41E039B6F00D9F112 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD31DFA01E039B6F00D9F112 /* SignInViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +66,11 @@
 		9A48305B080F999B74209310 /* Pods_STiOSTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_STiOSTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B50B608218BCFF9B639B1350 /* Pods-STiOSUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-STiOSUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-STiOSUITests/Pods-STiOSUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		CD12A4DFB1E5F9F56E26D187 /* Pods-STiOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-STiOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-STiOS/Pods-STiOS.debug.xcconfig"; sourceTree = "<group>"; };
+		DD31DF9B1E0397C400D9F112 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		DD31DF9D1E039B6F00D9F112 /* AddNewPatientViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddNewPatientViewController.swift; sourceTree = "<group>"; };
+		DD31DF9E1E039B6F00D9F112 /* PatientListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PatientListViewController.swift; sourceTree = "<group>"; };
+		DD31DF9F1E039B6F00D9F112 /* RegistrationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
+		DD31DFA01E039B6F00D9F112 /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,7 +141,12 @@
 				484DACD21DFA793E000EFFB6 /* GameViewController.swift */,
 				484DACD41DFA793E000EFFB6 /* Main.storyboard */,
 				484DACD71DFA793E000EFFB6 /* Assets.xcassets */,
+				DD31DF9D1E039B6F00D9F112 /* AddNewPatientViewController.swift */,
+				DD31DF9E1E039B6F00D9F112 /* PatientListViewController.swift */,
+				DD31DF9F1E039B6F00D9F112 /* RegistrationViewController.swift */,
+				DD31DFA01E039B6F00D9F112 /* SignInViewController.swift */,
 				484DACD91DFA793E000EFFB6 /* LaunchScreen.storyboard */,
+				DD31DF9B1E0397C400D9F112 /* GoogleService-Info.plist */,
 				484DACDC1DFA793E000EFFB6 /* Info.plist */,
 			);
 			path = STiOS;
@@ -287,6 +302,7 @@
 			files = (
 				484DACD11DFA793E000EFFB6 /* art.scnassets in Resources */,
 				484DACDB1DFA793E000EFFB6 /* LaunchScreen.storyboard in Resources */,
+				DD31DF9C1E0397C400D9F112 /* GoogleService-Info.plist in Resources */,
 				484DACD81DFA793E000EFFB6 /* Assets.xcassets in Resources */,
 				484DACD61DFA793E000EFFB6 /* Main.storyboard in Resources */,
 			);
@@ -453,6 +469,10 @@
 			files = (
 				484DACD31DFA793E000EFFB6 /* GameViewController.swift in Sources */,
 				484DACCF1DFA793E000EFFB6 /* AppDelegate.swift in Sources */,
+				DD31DFA41E039B6F00D9F112 /* SignInViewController.swift in Sources */,
+				DD31DFA21E039B6F00D9F112 /* PatientListViewController.swift in Sources */,
+				DD31DFA11E039B6F00D9F112 /* AddNewPatientViewController.swift in Sources */,
+				DD31DFA31E039B6F00D9F112 /* RegistrationViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -705,6 +725,7 @@
 				484DACF71DFA793E000EFFB6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		484DACF81DFA793E000EFFB6 /* Build configuration list for PBXNativeTarget "STiOSTests" */ = {
 			isa = XCConfigurationList;
@@ -713,6 +734,7 @@
 				484DACFA1DFA793E000EFFB6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		484DACFB1DFA793E000EFFB6 /* Build configuration list for PBXNativeTarget "STiOSUITests" */ = {
 			isa = XCConfigurationList;
@@ -721,6 +743,7 @@
 				484DACFD1DFA793E000EFFB6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
