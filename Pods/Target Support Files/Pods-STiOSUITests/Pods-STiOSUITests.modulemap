@@ -1,0 +1,6 @@
+framework module Pods_STiOSUITests {
+  umbrella header "Pods-STiOSUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
