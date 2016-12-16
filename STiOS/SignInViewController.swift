@@ -18,6 +18,7 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
     var password: String!
     
     let SeguePatientListViewController = "PatientListViewController"
+    let SegueRegistrationViewController = "RegistrationViewController"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,8 +54,11 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
         return true
     }
     
+    // clears the email and password fields before seguing to navigation controller
     func segueToPatientList()
     {
+        emailAddress = nil
+        password = nil
         performSegue(withIdentifier: SeguePatientListViewController, sender: view)
     }
     
@@ -65,6 +69,14 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
         alert.addAction(defaultAction)
         present(alert, animated: true, completion: nil)
         
+    }
+    
+    // clears the email and password fields before seguing to registration page
+    @IBAction func segueToRegistration()
+    {
+        emailAddress = nil
+        password = nil
+        performSegue(withIdentifier: SegueRegistrationViewController, sender: view)
     }
     
     @IBAction func signInUser()
