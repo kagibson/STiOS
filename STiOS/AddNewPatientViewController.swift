@@ -138,6 +138,10 @@ class AddNewPatientViewController: UIViewController, UITextFieldDelegate {
 
     }
     
+    @IBAction func cancel()
+    { 
+        self.dismiss(animated: true, completion: nil)
+    }
     
     @IBAction func addNewPatientPress()
     {
