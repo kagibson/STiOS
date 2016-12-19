@@ -13,14 +13,14 @@ import FirebaseAuth
 
 class PatientListViewController: UITableViewController {
     
-    @IBOutlet weak var userSelectList: UITableView!
+    //@IBOutlet weak var userSelectList: UITableView!
     @IBOutlet weak var testLabel: UILabel!
     
     var ref: FIRDatabaseReference!
     var patients: [Patient] = []
     var selectedPatient: Patient!
 
-    let cellIdentifier = "CellIdentifier"
+    let cellIdentifier = "LabelCell"
     
     var currentUser: FIRUser!
     
@@ -29,8 +29,8 @@ class PatientListViewController: UITableViewController {
         super.viewDidLoad()
         title = "Patient List"
         // Do any additional setup after loading the view, typically from a nib.
-        userSelectList.delegate = self
-        userSelectList.dataSource = self
+        //userSelectList.delegate = self
+        //userSelectList.dataSource = self
         ref = FIRDatabase.database().reference().child("users")
         
         FIRAuth.auth()?.addStateDidChangeListener {auth, user in
@@ -83,7 +83,6 @@ class PatientListViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedPatient = patients[indexPath.row]
-        testLabel.text = "\(selectedPatient.lastName), \(selectedPatient.firstName)"
     }
 
     // get users from database, create array of User structs, fill in table with user's names
@@ -100,7 +99,7 @@ class PatientListViewController: UITableViewController {
                 }
                 
             }
-            self.userSelectList.reloadData()
+            self.tableView.reloadData()
         })
         
     }
