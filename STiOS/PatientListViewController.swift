@@ -11,7 +11,7 @@ import Firebase
 import FirebaseAuth
 
 
-class PatientListViewController: UITableViewController {
+class PatientListViewController: UITableViewController, DismissalDelegate {
     
     //@IBOutlet weak var userSelectList: UITableView!
     @IBOutlet weak var testLabel: UILabel!
@@ -19,6 +19,8 @@ class PatientListViewController: UITableViewController {
     var ref: FIRDatabaseReference!
     var patients: [Patient] = []
     var selectedPatient: Patient!
+    
+    let SequeAddNewPatientViewController = "AddNewPatientViewController"
 
     let cellIdentifier = "LabelCell"
     
@@ -57,6 +59,14 @@ class PatientListViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+
+        if let vc = segue.destination as? Dismissable
+        {
+            vc.dismissalDelegate = self
+        }
+    }
+    
     // function of UITableViewDataSource
     override func numberOfSections(in tableView: UITableView) -> Int
     {
@@ -88,6 +98,7 @@ class PatientListViewController: UITableViewController {
     // get users from database, create array of User structs, fill in table with user's names
     func getPatientList()
     {
+        patients = []
         ref.queryOrdered(byChild: "lastName").observeSingleEvent(of: .value, with: { snapshot in
             for child in snapshot.children.allObjects as! [FIRDataSnapshot]
             {
@@ -103,6 +114,20 @@ class PatientListViewController: UITableViewController {
         })
         
     }
+    
+    // clears the email and password fields before seguing to registration page
+    @IBAction func segueToAddPatient()
+    {
+        self.definesPresentationContext = true
+        performSegue(withIdentifier: SequeAddNewPatientViewController, sender: view)
+    }
 
+    func finishedShowing(viewController: UIViewController) {
+        viewController.dismiss(animated: true, completion:
+            {
+                self.getPatientList()
+                self.tableView.reloadData()
+        })
+    }
 }
 

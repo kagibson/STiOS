@@ -48,7 +48,7 @@
                         <rightBarButtonItems>
                             <barButtonItem systemItem="add" id="6Tt-Qq-Z6a">
                                 <connections>
-                                    <segue destination="hRA-dd-w0q" kind="presentation" id="D5O-ty-Ewj"/>
+                                    <action selector="segueToAddPatient" destination="VCw-yz-2C6" id="gYN-bA-ZBZ"/>
                                 </connections>
                             </barButtonItem>
                             <barButtonItem systemItem="search" id="QYF-Xg-n4l">
@@ -59,10 +59,13 @@
                         </rightBarButtonItems>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <segue destination="hRA-dd-w0q" kind="presentation" identifier="AddNewPatientViewController" id="NFd-d7-aXa"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r4w-cn-UtF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-201" y="-707"/>
+            <point key="canvasLocation" x="-156" y="-707"/>
         </scene>
         <!--Add New Patient View Controller-->
         <scene sceneID="GvV-tI-rMy">
@@ -116,7 +119,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Go Back"/>
                                 <connections>
-                                    <action selector="cancel" destination="hRA-dd-w0q" eventType="touchUpInside" id="5Bz-Nw-KXd"/>
+                                    <action selector="done" destination="hRA-dd-w0q" eventType="touchUpInside" id="ZXx-Im-XfF"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="First Name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8sm-Iu-mLF">

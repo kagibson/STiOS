@@ -49,10 +49,12 @@ struct Patient
     
 }
 
-class AddNewPatientViewController: UIViewController, UITextFieldDelegate {
+class AddNewPatientViewController: UIViewController, UITextFieldDelegate, Dismissable {
     var newPatient = Patient()
     var ref: FIRDatabaseReference!
     var currentUser: FIRUser!
+    
+    weak var dismissalDelegate: DismissalDelegate?
     
     @IBOutlet weak var firstNameInput: UITextField!
     @IBOutlet weak var lastNameInput: UITextField!
@@ -93,6 +95,8 @@ class AddNewPatientViewController: UIViewController, UITextFieldDelegate {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
@@ -138,9 +142,10 @@ class AddNewPatientViewController: UIViewController, UITextFieldDelegate {
 
     }
     
-    @IBAction func cancel()
-    { 
-        self.dismiss(animated: true, completion: nil)
+    @IBAction func done()
+    {
+        print(self.isBeingPresented)
+        dismissalDelegate?.finishedShowing(viewController: self)
     }
     
     @IBAction func addNewPatientPress()
@@ -156,7 +161,7 @@ class AddNewPatientViewController: UIViewController, UITextFieldDelegate {
 
 
         }
-        self.dismiss(animated: true, completion: nil)
+        self.done()
     }
 
     /*
