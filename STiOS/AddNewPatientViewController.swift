@@ -50,6 +50,7 @@ struct Patient
 }
 
 class AddNewPatientViewController: UIViewController, UITextFieldDelegate, Dismissable {
+    
     var newPatient = Patient()
     var ref: FIRDatabaseReference!
     var currentUser: FIRUser!
@@ -142,12 +143,13 @@ class AddNewPatientViewController: UIViewController, UITextFieldDelegate, Dismis
 
     }
     
+    // informs delegate that view is ready to be dismissed
     @IBAction func done()
     {
-        print(self.isBeingPresented)
         dismissalDelegate?.finishedShowing(viewController: self)
     }
     
+    // adds new patient entry to database under UID
     @IBAction func addNewPatientPress()
     {
         if ((newPatient.firstName != "") && (newPatient.lastName != "") && (newPatient.shoulderWidth != 0) && (newPatient.upperArmLength != 0) && (newPatient.lowerArmLength != 0))

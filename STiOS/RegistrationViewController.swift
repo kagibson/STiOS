@@ -9,12 +9,13 @@
 import UIKit
 import FirebaseAuth
 
-class RegistrationViewController: UIViewController, UITextFieldDelegate {
+class RegistrationViewController: UIViewController, UITextFieldDelegate, Dismissable {
     
     @IBOutlet weak var emailAddressInput: UITextField!
     @IBOutlet weak var passwordInput: UITextField!
     @IBOutlet weak var confirmPasswordInput: UITextField!
-    
+
+    weak var dismissalDelegate: DismissalDelegate?
     var emailAddress: String!
     var password: String!
     var confirmPassword: String!
@@ -60,9 +61,9 @@ class RegistrationViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
-    @IBAction func cancel()
+    @IBAction func done()
     {
-        self.dismiss(animated: true, completion: nil)
+        dismissalDelegate?.finishedShowing(viewController: self)
     }
     
     
@@ -80,7 +81,16 @@ class RegistrationViewController: UIViewController, UITextFieldDelegate {
                     else
                     {
                         FIRAuth.auth()?.signIn(withEmail: self.emailAddress, password: self.password)
-                        self.dismiss(animated: true, completion: nil)
+                        // fill in email and password fields upon return to sign-in view
+                        if (self.dismissalDelegate is SignInViewController)
+                        {
+                            let signIn = self.dismissalDelegate as! SignInViewController
+                            signIn.emailAddressInput.text = self.emailAddress
+                            signIn.passwordInput.text = self.password
+                            signIn.emailAddress = self.emailAddress
+                            signIn.password = self.password
+                        }
+                        self.done()
                     }
                 
                 })

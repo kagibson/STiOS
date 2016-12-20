@@ -13,26 +13,24 @@ import FirebaseAuth
 
 class PatientListViewController: UITableViewController, DismissalDelegate {
     
-    //@IBOutlet weak var userSelectList: UITableView!
     @IBOutlet weak var testLabel: UILabel!
     
     var ref: FIRDatabaseReference!
     var patients: [Patient] = []
     var selectedPatient: Patient!
+    var currentUser: FIRUser!
     
     let SequeAddNewPatientViewController = "AddNewPatientViewController"
-
     let cellIdentifier = "LabelCell"
     
-    var currentUser: FIRUser!
+
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
         title = "Patient List"
         // Do any additional setup after loading the view, typically from a nib.
-        //userSelectList.delegate = self
-        //userSelectList.dataSource = self
+        
         ref = FIRDatabase.database().reference().child("users")
         
         FIRAuth.auth()?.addStateDidChangeListener {auth, user in
@@ -118,10 +116,11 @@ class PatientListViewController: UITableViewController, DismissalDelegate {
     // clears the email and password fields before seguing to registration page
     @IBAction func segueToAddPatient()
     {
-        self.definesPresentationContext = true
+        //self.definesPresentationContext = true
         performSegue(withIdentifier: SequeAddNewPatientViewController, sender: view)
     }
-
+    
+    // dismiss AddNewPatientViewController and refresh patient list with new entry
     func finishedShowing(viewController: UIViewController) {
         viewController.dismiss(animated: true, completion:
             {

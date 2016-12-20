@@ -9,7 +9,7 @@
 import UIKit
 import FirebaseAuth
 
-class SignInViewController: UIViewController, UITextFieldDelegate {
+class SignInViewController: UIViewController, UITextFieldDelegate, DismissalDelegate {
 
     @IBOutlet weak var emailAddressInput: UITextField!
     @IBOutlet weak var passwordInput: UITextField!
@@ -76,6 +76,8 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
     {
         emailAddress = nil
         password = nil
+        emailAddressInput.text = ""
+        passwordInput.text = ""
         performSegue(withIdentifier: SegueRegistrationViewController, sender: view)
     }
     
@@ -95,6 +97,19 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
                 }
             })
         }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let vc = segue.destination as? Dismissable
+        {
+            vc.dismissalDelegate = self
+        }
+    }
+    
+    func finishedShowing(viewController: UIViewController) {
+        viewController.dismiss(animated: true, completion: {
+            
+        })
     }
     
 

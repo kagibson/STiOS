@@ -270,7 +270,7 @@
                     <connections>
                         <outlet property="emailAddressInput" destination="nKz-et-sQy" id="KbY-5n-ecu"/>
                         <outlet property="passwordInput" destination="4Xx-mc-Bx2" id="eaH-ea-rwU"/>
-                        <segue destination="g7j-G0-Dm6" kind="show" identifier="RegistrationViewController" id="AeR-er-TKR"/>
+                        <segue destination="g7j-G0-Dm6" kind="presentation" identifier="RegistrationViewController" id="AeR-er-TKR"/>
                         <segue destination="PSj-Sy-5sq" kind="show" identifier="PatientListViewController" id="MjQ-5H-A7r"/>
                     </connections>
                 </viewController>
@@ -324,7 +324,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Go back"/>
                                 <connections>
-                                    <action selector="cancel" destination="g7j-G0-Dm6" eventType="touchUpInside" id="V7O-8Y-IQE"/>
+                                    <action selector="done" destination="g7j-G0-Dm6" eventType="touchUpInside" id="sY6-hG-8Wy"/>
                                 </connections>
                             </button>
                         </subviews>

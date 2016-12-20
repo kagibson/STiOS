@@ -20,7 +20,7 @@ protocol Dismissable : class
     weak var dismissalDelegate : DismissalDelegate? { get set }
 }
 
-extension DismissalDelegate where Self: UIViewController
+/*extension DismissalDelegate where Self: UIViewController
 {
     func finishedShowing(viewController: UIViewController) {
         print(viewController.presentingViewController)
@@ -35,4 +35,4 @@ extension DismissalDelegate where Self: UIViewController
         
         self.navigationController?.popViewController(animated: true)
     }
-}
+} */
