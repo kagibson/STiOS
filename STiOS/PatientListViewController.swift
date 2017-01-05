@@ -65,6 +65,8 @@ class PatientListViewController: UITableViewController, DismissalDelegate {
         }
     }
     
+    
+    
     // function of UITableViewDataSource
     override func numberOfSections(in tableView: UITableView) -> Int
     {
@@ -128,5 +130,12 @@ class PatientListViewController: UITableViewController, DismissalDelegate {
                 self.tableView.reloadData()
         })
     }
+    
+    @IBAction func pressBackButton()
+    {
+        try! FIRAuth.auth()!.signOut()
+        self.performSegue(withIdentifier: "unwindToSignIn", sender: self)
+    }
+    
 }
 

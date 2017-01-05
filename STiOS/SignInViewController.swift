@@ -71,6 +71,19 @@ class SignInViewController: UIViewController, UITextFieldDelegate, DismissalDele
         
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let vc = segue.destination as? Dismissable
+        {
+            vc.dismissalDelegate = self
+        }
+    }
+    
+    func finishedShowing(viewController: UIViewController) {
+        viewController.dismiss(animated: true, completion: {
+            
+        })
+    }
+    
     // clears the email and password fields before seguing to registration page
     @IBAction func segueToRegistration()
     {
@@ -99,18 +112,13 @@ class SignInViewController: UIViewController, UITextFieldDelegate, DismissalDele
         }
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let vc = segue.destination as? Dismissable
-        {
-            vc.dismissalDelegate = self
-        }
+    @IBAction func unwindToSignIn(segue: UIStoryboardSegue)
+    {
+        emailAddressInput.text = ""
+        passwordInput.text = ""
     }
     
-    func finishedShowing(viewController: UIViewController) {
-        viewController.dismiss(animated: true, completion: {
-            
-        })
-    }
+
     
 
     /*
