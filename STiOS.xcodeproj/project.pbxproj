@@ -27,7 +27,7 @@
 		DD31DFA31E039B6F00D9F112 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD31DF9F1E039B6F00D9F112 /* RegistrationViewController.swift */; };
 		DD31DFA41E039B6F00D9F112 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD31DFA01E039B6F00D9F112 /* SignInViewController.swift */; };
 		DD921F5A1E08B29300F50554 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD921F591E08B29300F50554 /* Protocols.swift */; };
-		DDA956691E312DFC00ABD16D /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA956681E312DFC00ABD16D /* CustomTabBarController.swift */; };
+		DDA956691E312DFC00ABD16D /* SessionTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA956681E312DFC00ABD16D /* SessionTabBarController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,7 +80,7 @@
 		DD31DF9F1E039B6F00D9F112 /* RegistrationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
 		DD31DFA01E039B6F00D9F112 /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		DD921F591E08B29300F50554 /* Protocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
-		DDA956681E312DFC00ABD16D /* CustomTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
+		DDA956681E312DFC00ABD16D /* SessionTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionTabBarController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -157,7 +157,7 @@
 				DD31DF9D1E039B6F00D9F112 /* AddNewPatientViewController.swift */,
 				DD921F591E08B29300F50554 /* Protocols.swift */,
 				DD31DF9E1E039B6F00D9F112 /* PatientListViewController.swift */,
-				DDA956681E312DFC00ABD16D /* CustomTabBarController.swift */,
+				DDA956681E312DFC00ABD16D /* SessionTabBarController.swift */,
 				DD31DF9F1E039B6F00D9F112 /* RegistrationViewController.swift */,
 				DD31DFA01E039B6F00D9F112 /* SignInViewController.swift */,
 				484DACD91DFA793E000EFFB6 /* LaunchScreen.storyboard */,
@@ -487,7 +487,7 @@
 				4115E6D41E2D5AF30068C139 /* BluetoothTableViewController.swift in Sources */,
 				DD921F5A1E08B29300F50554 /* Protocols.swift in Sources */,
 				DD31DFA41E039B6F00D9F112 /* SignInViewController.swift in Sources */,
-				DDA956691E312DFC00ABD16D /* CustomTabBarController.swift in Sources */,
+				DDA956691E312DFC00ABD16D /* SessionTabBarController.swift in Sources */,
 				DD31DFA21E039B6F00D9F112 /* PatientListViewController.swift in Sources */,
 				4115E6D81E2D5B980068C139 /* BTServiceCharaterictics.swift in Sources */,
 				4115E6D61E2D5B4A0068C139 /* BTDiscoveryViewController.swift in Sources */,
