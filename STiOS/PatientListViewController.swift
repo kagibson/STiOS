@@ -63,7 +63,12 @@ class PatientListViewController: UITableViewController, DismissalDelegate {
         if let vc = segue.destination as? Dismissable
         {
             vc.dismissalDelegate = self
+            if let tbc = segue.destination as? SessionTabBarController
+            {
+                tbc.selectedPatient = self.selectedPatient
+            }
         }
+        
     }
     
     

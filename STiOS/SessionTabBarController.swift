@@ -11,5 +11,6 @@ import UIKit
 class SessionTabBarController: UITabBarController, Dismissable {
     
     weak var dismissalDelegate: DismissalDelegate?
+    var selectedPatient = Patient()
     
     }
