@@ -1,4 +1,5 @@
 PODS:
+  - ExerciseMotionTracker (0.0.1)
   - Firebase/Auth (3.11.0):
     - Firebase/Core
     - FirebaseAuth (= 3.1.0)
@@ -40,11 +41,22 @@ PODS:
   - GTMSessionFetcher/Core (1.1.7)
 
 DEPENDENCIES:
+  - ExerciseMotionTracker (from `https://github.com/kagibson/exerciseMotionTracker`)
   - Firebase/Auth
   - Firebase/Core
   - Firebase/Database
 
+EXTERNAL SOURCES:
+  ExerciseMotionTracker:
+    :git: https://github.com/kagibson/exerciseMotionTracker
+
+CHECKOUT OPTIONS:
+  ExerciseMotionTracker:
+    :commit: 3a04f3f0db356823b80238087904d61879ecddf8
+    :git: https://github.com/kagibson/exerciseMotionTracker
+
 SPEC CHECKSUMS:
+  ExerciseMotionTracker: dfb2d8904cdc06cb5d120ce2125f824860aaa95e
   Firebase: b8134e285eb33201115bc688bc5d7f112923bc1f
   FirebaseAnalytics: 9c67af0ebeb8d2146c9b4ea2616439affa947b58
   FirebaseAuth: b436e4ecebe068bf8e8c6e4e29de5756ffe7ee24
@@ -56,6 +68,6 @@ SPEC CHECKSUMS:
   GoogleToolboxForMac: 2b2596cbb7186865e98cadf2b1e262d851c2b168
   GTMSessionFetcher: a1f8ed39e4fe21c68957daed472c7afbcdf29166
 
-PODFILE CHECKSUM: f399e0ad4ee929b8805fc5f506396e23542b5659
+PODFILE CHECKSUM: c05db73b3318e92e33cc743a1d0a33cfdb165432
 
 COCOAPODS: 1.1.1
