@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		09E1F4F23FF4C7F4426C8970 /* Pods_STiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 578DAEF0AAD5738B28D11EC8 /* Pods_STiOS.framework */; };
-		4115E6D41E2D5AF30068C139 /* BluetoothTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4115E6D31E2D5AF30068C139 /* BluetoothTableViewController.swift */; };
 		4115E6D61E2D5B4A0068C139 /* BTDiscoveryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4115E6D51E2D5B4A0068C139 /* BTDiscoveryViewController.swift */; };
 		4115E6D81E2D5B980068C139 /* BTServiceCharaterictics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4115E6D71E2D5B980068C139 /* BTServiceCharaterictics.swift */; };
 		484DACCF1DFA793E000EFFB6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 484DACCE1DFA793E000EFFB6 /* AppDelegate.swift */; };
@@ -28,6 +27,7 @@
 		DD31DFA41E039B6F00D9F112 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD31DFA01E039B6F00D9F112 /* SignInViewController.swift */; };
 		DD921F5A1E08B29300F50554 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD921F591E08B29300F50554 /* Protocols.swift */; };
 		DDA956691E312DFC00ABD16D /* SessionTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA956681E312DFC00ABD16D /* SessionTabBarController.swift */; };
+		DDA9566D1E359C7D00ABD16D /* ExercisePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA9566C1E359C7D00ABD16D /* ExercisePickerViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,7 +51,6 @@
 		0D4BC1DE34083E3C0DBED030 /* Pods-STiOSUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-STiOSUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-STiOSUITests/Pods-STiOSUITests.release.xcconfig"; sourceTree = "<group>"; };
 		136EFC97ACA905E434908F9B /* Pods-STiOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-STiOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-STiOS/Pods-STiOS.release.xcconfig"; sourceTree = "<group>"; };
 		2D9BAEE5F2AEA66E963EA66C /* Pods_STiOSUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_STiOSUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		4115E6D31E2D5AF30068C139 /* BluetoothTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BluetoothTableViewController.swift; sourceTree = "<group>"; };
 		4115E6D51E2D5B4A0068C139 /* BTDiscoveryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BTDiscoveryViewController.swift; sourceTree = "<group>"; };
 		4115E6D71E2D5B980068C139 /* BTServiceCharaterictics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BTServiceCharaterictics.swift; sourceTree = "<group>"; };
 		484DACCB1DFA793E000EFFB6 /* STiOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = STiOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -81,6 +80,7 @@
 		DD31DFA01E039B6F00D9F112 /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		DD921F591E08B29300F50554 /* Protocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
 		DDA956681E312DFC00ABD16D /* SessionTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionTabBarController.swift; sourceTree = "<group>"; };
+		DDA9566C1E359C7D00ABD16D /* ExercisePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExercisePickerViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,7 +150,6 @@
 				484DACD01DFA793E000EFFB6 /* art.scnassets */,
 				484DACD21DFA793E000EFFB6 /* GameViewController.swift */,
 				484DACD41DFA793E000EFFB6 /* Main.storyboard */,
-				4115E6D31E2D5AF30068C139 /* BluetoothTableViewController.swift */,
 				4115E6D51E2D5B4A0068C139 /* BTDiscoveryViewController.swift */,
 				4115E6D71E2D5B980068C139 /* BTServiceCharaterictics.swift */,
 				484DACD71DFA793E000EFFB6 /* Assets.xcassets */,
@@ -163,6 +162,7 @@
 				484DACD91DFA793E000EFFB6 /* LaunchScreen.storyboard */,
 				DD31DF9B1E0397C400D9F112 /* GoogleService-Info.plist */,
 				484DACDC1DFA793E000EFFB6 /* Info.plist */,
+				DDA9566C1E359C7D00ABD16D /* ExercisePickerViewController.swift */,
 			);
 			path = STiOS;
 			sourceTree = "<group>";
@@ -484,10 +484,10 @@
 			files = (
 				484DACD31DFA793E000EFFB6 /* GameViewController.swift in Sources */,
 				484DACCF1DFA793E000EFFB6 /* AppDelegate.swift in Sources */,
-				4115E6D41E2D5AF30068C139 /* BluetoothTableViewController.swift in Sources */,
 				DD921F5A1E08B29300F50554 /* Protocols.swift in Sources */,
 				DD31DFA41E039B6F00D9F112 /* SignInViewController.swift in Sources */,
 				DDA956691E312DFC00ABD16D /* SessionTabBarController.swift in Sources */,
+				DDA9566D1E359C7D00ABD16D /* ExercisePickerViewController.swift in Sources */,
 				DD31DFA21E039B6F00D9F112 /* PatientListViewController.swift in Sources */,
 				4115E6D81E2D5B980068C139 /* BTServiceCharaterictics.swift in Sources */,
 				4115E6D61E2D5B4A0068C139 /* BTDiscoveryViewController.swift in Sources */,

@@ -238,9 +238,6 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <segue destination="rbW-Kh-sYJ" kind="showDetail" id="DUj-1f-kCL"/>
-                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="bMS-if-wO9">
                                         <rect key="frame" x="0.0" y="44" width="320" height="44"/>
@@ -266,11 +263,13 @@
                             <outlet property="delegate" destination="dXc-ur-Cvl" id="6Lq-fm-a7J"/>
                         </connections>
                     </tableView>
+                    <tabBarItem key="tabBarItem" title="Bluetooth" id="3Wt-eK-TkI"/>
                     <navigationItem key="navigationItem" title="Bluetooth Setup" id="KCq-hv-6gz"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Do1-RV-gci" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2010" y="202"/>
+            <point key="canvasLocation" x="-1035" y="864"/>
         </scene>
         <!--Bluetooth Connection-->
         <scene sceneID="rzv-bm-b5i">
@@ -490,8 +489,7 @@
         <!--Exercises-->
         <scene sceneID="1oy-Pv-cL3">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="gRN-8J-1Fp" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController id="370-f2-nrs" sceneMemberID="viewController">
+                <viewController id="370-f2-nrs" customClass="ExercisePickerViewController" customModule="STiOS" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="gk3-bM-ZY5"/>
                         <viewControllerLayoutGuide type="bottom" id="HLc-i7-qAq"/>
@@ -508,7 +506,11 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Exercises" id="lwh-Le-vT3"/>
+                    <connections>
+                        <outlet property="exercisePicker" destination="mEQ-gI-4iq" id="8P1-iz-0hZ"/>
+                    </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gRN-8J-1Fp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1946" y="865"/>
         </scene>
@@ -546,25 +548,6 @@
             </objects>
             <point key="canvasLocation" x="806" y="863"/>
         </scene>
-        <!--Bluetooth-->
-        <scene sceneID="IVU-wZ-OfY">
-            <objects>
-                <viewController id="K5E-yt-4XV" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="GIR-a3-M83"/>
-                        <viewControllerLayoutGuide type="bottom" id="0hp-88-iHl"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="z9d-in-mpb">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Bluetooth" id="Ly3-Sc-TA8"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Veo-aB-4sZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1031" y="864"/>
-        </scene>
         <!--Session Tab Bar Controller-->
         <scene sceneID="9oy-M6-f0n">
             <objects>
@@ -576,7 +559,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="370-f2-nrs" kind="relationship" relationship="viewControllers" id="TqI-Yu-Puf"/>
-                        <segue destination="K5E-yt-4XV" kind="relationship" relationship="viewControllers" id="Hqw-gM-eH3"/>
+                        <segue destination="dXc-ur-Cvl" kind="relationship" relationship="viewControllers" id="4HX-YN-t5m"/>
                         <segue destination="BV1-FR-VrT" kind="relationship" relationship="viewControllers" id="V4b-MP-FDv"/>
                         <segue destination="Zqb-iY-gH5" kind="relationship" relationship="viewControllers" id="m0A-U4-Ode"/>
                     </connections>
