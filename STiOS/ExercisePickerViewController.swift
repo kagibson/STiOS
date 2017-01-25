@@ -10,28 +10,31 @@ import UIKit
 
 class ExercisePickerViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
     
-    let exercises = ["Bicep curl", "Shoulder press", "Flies", "Leg extension"];
+    let exercises = ["Bicep curl", "Shoulder press", "Chest flies", "Leg extension"];
     @IBOutlet weak var exercisePicker: UIPickerView!;
     
     override func viewDidLoad() {
         super.viewDidLoad()
         exercisePicker.dataSource = self
         exercisePicker.delegate = self
+
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
+    // number of picker wheels
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
     
+    // number of items on picker wheel
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return exercises.count
     }
     
+    // fills in picker wheel
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return exercises[row]
     }

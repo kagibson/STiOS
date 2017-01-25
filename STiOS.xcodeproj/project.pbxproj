@@ -159,10 +159,10 @@
 				DDA956681E312DFC00ABD16D /* SessionTabBarController.swift */,
 				DD31DF9F1E039B6F00D9F112 /* RegistrationViewController.swift */,
 				DD31DFA01E039B6F00D9F112 /* SignInViewController.swift */,
+				DDA9566C1E359C7D00ABD16D /* ExercisePickerViewController.swift */,
 				484DACD91DFA793E000EFFB6 /* LaunchScreen.storyboard */,
 				DD31DF9B1E0397C400D9F112 /* GoogleService-Info.plist */,
 				484DACDC1DFA793E000EFFB6 /* Info.plist */,
-				DDA9566C1E359C7D00ABD16D /* ExercisePickerViewController.swift */,
 			);
 			path = STiOS;
 			sourceTree = "<group>";
