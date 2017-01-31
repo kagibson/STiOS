@@ -26,6 +26,7 @@ class BTModuleViewController: UIViewController,  UITableViewDataSource, UITableV
     fileprivate var scanTimer: Timer?
     fileprivate var connectionAttemptTimer: Timer?
     fileprivate var connectedPeripheral: CBPeripheral?
+     fileprivate var peripherals: [CBPeripheral?] = []
     fileprivate var peripheral: CBPeripheral?
     
     // UUID and characteristics
@@ -42,7 +43,7 @@ class BTModuleViewController: UIViewController,  UITableViewDataSource, UITableV
 
         //init CBCentralManager and its delegate
         
-        outputLabel.text = "Waiting for device..."
+        outputLabel.text = "Make sure the device is ON"
         centralManager = CBCentralManager(delegate: self, queue: nil)
         
         
@@ -63,24 +64,33 @@ class BTModuleViewController: UIViewController,  UITableViewDataSource, UITableV
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 1
+        return peripherals.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         //We set the cell title according to the peripheral's name
-       // let peripheral: CBPeripheral = self.peripheral!
-        cell.textLabel?.text = "hello"
+        let peripheral: CBPeripheral = self.peripherals[indexPath.row]!
+        
+        if (isBluetoothEnabled)
+        {
+            cell.textLabel?.text = peripheral.name
+        }
+        else
+        {
+            cell.textLabel?.text = ""
+        }
+        
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if(isBluetoothEnabled){
-            let peripheral: CBPeripheral = self.peripheral!
+        let peripheral: CBPeripheral = self.peripherals[indexPath.row]!
         centralManager?.connect(peripheral, options: nil)
         // Connect to peripheral
+        
         outputLabel.text = "Bluno Board is now connected"
-        }
+        
         
     }
     
@@ -94,7 +104,7 @@ class BTModuleViewController: UIViewController,  UITableViewDataSource, UITableV
         }
         connectionAttemptTimer?.invalidate()
         scanTimer?.invalidate()
-        outputLabel.text = "Make sure the device is ON"
+        //outputLabel.text = "Make sure the device is ON"
     }
     
     
@@ -104,21 +114,18 @@ class BTModuleViewController: UIViewController,  UITableViewDataSource, UITableV
         if let central = centralManager
         {
             central.scanForPeripherals(withServices: [BLEModuleServiceUUID], options: nil)
-            outputLabel.text = "Scanning..."
+            //outputLabel.text = "Scanning..."
+            print("scanning...")
             scanTimer = Timer.scheduledTimer(timeInterval: 20, target: self, selector: #selector(BTModuleViewController.timeout), userInfo: nil, repeats: false)
         }
-        //output.text = "Device is already connected"
         
     }
     
     func stopScanning()
     {
-        print("Stopped scanning.")
-        //print("Found \(visiblePeripherals.count) peripherals.")
         centralManager?.stopScan()
         //refreshControl?.endRefreshing()
         scanTimer?.invalidate()
-        outputLabel.text = "Make sure the device is ON"
     }
     
     // MARK: - CBCentralManagerDelegate
@@ -140,7 +147,10 @@ class BTModuleViewController: UIViewController,  UITableViewDataSource, UITableV
             
 
             //central.connect(peripheral, options: nil)
-            outputLabel.text = "Found " + peripheral.name! + " device"
+            outputLabel.text = ""
+            
+            peripherals.append(peripheral)
+            self.tableView.reloadData()
             
         }
     }
@@ -165,9 +175,10 @@ class BTModuleViewController: UIViewController,  UITableViewDataSource, UITableV
         // See if it was our peripheral that disconnected
         //if (peripheral == self.peripheralBLE) {
         //self.bleService = nil;
+        isBluetoothEnabled = false
         peripheral.delegate = nil
         print("Bluno Board is disconnected")
-        //outputLabel.text = "Bluno Board is disconnected"
+        outputLabel.text = "Bluno Board is disconnected"
         //}
         
         // Start scanning for new devices
