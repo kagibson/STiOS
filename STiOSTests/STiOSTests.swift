@@ -7,7 +7,7 @@
 //
 
 import XCTest
-@testable import STiOS
+//@testable import STiOS
 
 class STiOSTests: XCTestCase {
     
