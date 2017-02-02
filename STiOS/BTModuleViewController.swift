@@ -21,7 +21,6 @@ class BTModuleViewController: UIViewController,  UITableViewDataSource, UITableV
     @IBOutlet weak var outputLabel: UILabel!
     
     fileprivate var centralManager: CBCentralManager?
-    fileprivate var isBluetoothEnabled = false
     fileprivate var isConnected = false
     fileprivate var scanTimer: Timer?
     fileprivate var connectionAttemptTimer: Timer?
@@ -108,7 +107,6 @@ class BTModuleViewController: UIViewController,  UITableViewDataSource, UITableV
         }
         connectionAttemptTimer?.invalidate()
         scanTimer?.invalidate()
-        //outputLabel.text = "Make sure the device is ON"
     }
     
     
@@ -146,7 +144,6 @@ class BTModuleViewController: UIViewController,  UITableViewDataSource, UITableV
         {
             // Retain the peripheral before trying to connect
             self.peripheral = peripheral
-            //isBluetoothEnabled = true
             
 
             //central.connect(peripheral, options: nil)
@@ -175,16 +172,12 @@ class BTModuleViewController: UIViewController,  UITableViewDataSource, UITableV
     
     func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?) {
         
-        // See if it was our peripheral that disconnected
-        //if (peripheral == self.peripheralBLE) {
-        //self.bleService = nil;
         self.peripherals = []
         isConnected = false
         peripheral.delegate = nil
         print("Bluno Board is disconnected")
         outputLabel.text = "Bluno Board is disconnected"
         
-        //}
         
         // Start scanning for new devices
         self.startScanning()
