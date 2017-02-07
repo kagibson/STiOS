@@ -28,6 +28,9 @@ class BTModuleViewController: UIViewController,  UITableViewDataSource, UITableV
      fileprivate var peripherals: [CBPeripheral?] = []
     fileprivate var peripheral: CBPeripheral?
     
+    var strArr = [String]()
+    var index = 0
+    
     // UUID and characteristics
     let BLEModuleServiceUUID = CBUUID(string: "0000dfb0-0000-1000-8000-00805f9b34fb")
     let kBlunoDataCharacteristic  = CBUUID(string: "0000dfb1-0000-1000-8000-00805f9b34fb")
@@ -280,12 +283,9 @@ class BTModuleViewController: UIViewController,  UITableViewDataSource, UITableV
         if characteristic.uuid == kBlunoDataCharacteristic {
             let value = String(data: characteristic.value!, encoding: String.Encoding.utf8)
             //print("Value \(value)")
-            for char in (value?.characters)!{
-                if (char >= "0" && char >= "9"){
-                    print("value \(value)")
-                }
-                
-            }
+            storeStringData(value!)
+            
+            index+=1
             
         }
         
@@ -295,21 +295,48 @@ class BTModuleViewController: UIViewController,  UITableViewDataSource, UITableV
     
     // Mark: - Private
     
-    func readData(data: Float) ->[Float]
-    {
-        var value = [Float]()
-        /******** (1) CODE TO BE ADDED *******/
-        for index in 0...4{
-            value[index] = data
+    func storeStringData(_ data: String){
+        
+        if (index < 4){ // only storing the first 4 bytes
+            //print("index is \(index)")
+            if (data != "\r\n"){
+                strArr.append(data)
+            }
         }
-        return value
+        else{
+            convertToFloat(strArr)
+        }
+        
+        
+        
+        // return strArr
     }
     
-    /*func sendBTServiceNotificationWithIsBluetoothConnected(_ isBluetoothConnected: Bool) {
-        let connectionDetails = ["isConnected": isBluetoothConnected]
-        NotificationCenter.default.post(name: Notification.Name(rawValue: BLEServiceChangedStatusNotification), object: self, userInfo: connectionDetails)
-    }*/
+    func convertToFloat(_ array: [String]){
+        
+        var floatArr = [Float]()
+        var arrIndex = 0
+        
+        for string in array {
+            //print("string is \(string)")
+            let myFloat = (string as NSString).floatValue
+            //numberFloatValue = Double(number.floatValue)
+            
+            floatArr.insert(myFloat, at: arrIndex)
+            
+            print("float[\(arrIndex)] is \(floatArr[arrIndex])")
+            arrIndex += 1
+            
+        }
+        resetArray()
+        
+        //return floatArr
+    }
     
+    func resetArray(){
+        self.strArr = []
+        index = -1
+    }
 
     @IBAction func scanBTN(_ sender: Any) {
         let central = centralManager
