@@ -25,12 +25,14 @@ class BTModuleViewController: UIViewController,  UITableViewDataSource, UITableV
     fileprivate var scanTimer: Timer?
     fileprivate var connectionAttemptTimer: Timer?
     fileprivate var connectedPeripheral: CBPeripheral?
-     fileprivate var peripherals: [CBPeripheral?] = []
+    fileprivate var peripherals: [CBPeripheral?] = []
     fileprivate var peripheral: CBPeripheral?
     
+    // variables for sensor updates
     var formatString = ""
     var strArr = [String]()
     var writingToString = false
+    var sensor1Received = false, sensor2Received = false, sensor3Received = false, sensor4Received = false // sensor update flags
     var sensorValues = [String: Float]()
     
     // UUID and characteristics
@@ -282,10 +284,7 @@ class BTModuleViewController: UIViewController,  UITableViewDataSource, UITableV
         
         if characteristic.uuid == kBlunoDataCharacteristic {
             let value = String(data: characteristic.value!, encoding: String.Encoding.utf8)
-            
             assembleFormatString(value!)
-            
-            
         }
         
     }
@@ -318,8 +317,7 @@ class BTModuleViewController: UIViewController,  UITableViewDataSource, UITableV
             else if (char == "~")
             {
                 writingToString = false
-                print(formatString)
-                //getSensorVals(formatString)
+                updateSensorDictionary(sensor_str: formatString)
                 formatString = ""
             }
             
@@ -332,16 +330,44 @@ class BTModuleViewController: UIViewController,  UITableViewDataSource, UITableV
             }
         }
         
-        /*strArr = data.components(separatedBy: "/")
-        for element in strArr
-        {
-            print(element)
-        }*/
-        
-        // return strArr
     }
     
-    func convertToFloat(_ array: [String]){
+    func updateSensorDictionary(sensor_str: String)
+    {
+        // split formatted string by delimiters
+        let strArr = sensor_str.components(separatedBy: ",")
+ 
+        // store sensor components
+        sensorValues[strArr[0]+"w"] = (strArr[1] as NSString).floatValue;
+        sensorValues[strArr[0]+"x"] = (strArr[2] as NSString).floatValue;
+        sensorValues[strArr[0]+"y"] = (strArr[3] as NSString).floatValue;
+        sensorValues[strArr[0]+"z"] = (strArr[4] as NSString).floatValue;
+        
+        // set sensor flags
+        if (strArr[0] == "s1")
+        {
+            sensor1Received = true
+        }
+        
+        else if (strArr[0] == "s2")
+        {
+            sensor2Received = true
+        }
+        
+        else if (strArr[0] == "s3")
+        {
+            sensor3Received = true
+        }
+        
+        else if (strArr[0] == "s4")
+        {
+            sensor4Received = true
+        }
+        
+        
+    }
+    
+    /*func convertToFloat(_ array: [String]){
         
         var floatArr = [Float]()
         var arrIndex = 0
@@ -360,11 +386,11 @@ class BTModuleViewController: UIViewController,  UITableViewDataSource, UITableV
         resetArray()
         
         //return floatArr
-    }
+    } */
     
-    func resetArray(){
+    /*func resetArray(){
         self.strArr = []
-    }
+    } */
 
     @IBAction func scanBTN(_ sender: Any) {
         let central = centralManager
