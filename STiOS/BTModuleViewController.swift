@@ -279,13 +279,13 @@ class BTModuleViewController: UIViewController,  UITableViewDataSource, UITableV
     func peripheral(_ peripheral: CBPeripheral, didUpdateValueFor characteristic: CBCharacteristic, error: Error?){
         
         //var data: String
-        
+        //print("did update value")
         if characteristic.uuid == kBlunoDataCharacteristic {
             let value = String(data: characteristic.value!, encoding: String.Encoding.utf8)
             //print("Value \(value)")
             storeStringData(value!)
             
-            index+=1
+            //index+=1
             
         }
         
@@ -297,7 +297,7 @@ class BTModuleViewController: UIViewController,  UITableViewDataSource, UITableV
     
     func storeStringData(_ data: String){
         
-        if (index < 4){ // only storing the first 4 bytes
+        /*if (index < 4){ // only storing the first 4 bytes
             //print("index is \(index)")
             if (data != "\r\n"){
                 strArr.append(data)
@@ -305,9 +305,14 @@ class BTModuleViewController: UIViewController,  UITableViewDataSource, UITableV
         }
         else{
             convertToFloat(strArr)
-        }
-        
-        
+        } 
+    */
+        print(data);
+        /*strArr = data.components(separatedBy: "/")
+        for element in strArr
+        {
+            print(element)
+        }*/
         
         // return strArr
     }
