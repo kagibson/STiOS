@@ -28,8 +28,10 @@ class BTModuleViewController: UIViewController,  UITableViewDataSource, UITableV
      fileprivate var peripherals: [CBPeripheral?] = []
     fileprivate var peripheral: CBPeripheral?
     
+    var formatString = ""
     var strArr = [String]()
-    var index = 0
+    var writingToString = false
+    var sensorValues = [String: Float]()
     
     // UUID and characteristics
     let BLEModuleServiceUUID = CBUUID(string: "0000dfb0-0000-1000-8000-00805f9b34fb")
@@ -278,14 +280,11 @@ class BTModuleViewController: UIViewController,  UITableViewDataSource, UITableV
     
     func peripheral(_ peripheral: CBPeripheral, didUpdateValueFor characteristic: CBCharacteristic, error: Error?){
         
-        //var data: String
-        //print("did update value")
         if characteristic.uuid == kBlunoDataCharacteristic {
             let value = String(data: characteristic.value!, encoding: String.Encoding.utf8)
-            //print("Value \(value)")
-            storeStringData(value!)
             
-            //index+=1
+            assembleFormatString(value!)
+            
             
         }
         
@@ -295,7 +294,7 @@ class BTModuleViewController: UIViewController,  UITableViewDataSource, UITableV
     
     // Mark: - Private
     
-    func storeStringData(_ data: String){
+    func assembleFormatString(_ data: String){
         
         /*if (index < 4){ // only storing the first 4 bytes
             //print("index is \(index)")
@@ -307,7 +306,32 @@ class BTModuleViewController: UIViewController,  UITableViewDataSource, UITableV
             convertToFloat(strArr)
         } 
     */
-        print(data);
+        for char in data.characters
+        {
+            // check for start of formatted stream
+            if (char == "/")
+            {
+                writingToString = true
+            }
+            
+            // check for end of formatted stream
+            else if (char == "~")
+            {
+                writingToString = false
+                print(formatString)
+                //getSensorVals(formatString)
+                formatString = ""
+            }
+            
+            else
+            {
+                if (writingToString)
+                {
+                    formatString.append(char)
+                }
+            }
+        }
+        
         /*strArr = data.components(separatedBy: "/")
         for element in strArr
         {
@@ -340,7 +364,6 @@ class BTModuleViewController: UIViewController,  UITableViewDataSource, UITableV
     
     func resetArray(){
         self.strArr = []
-        index = -1
     }
 
     @IBAction func scanBTN(_ sender: Any) {
