@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="gN8-Fe-g6b">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1212" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="gN8-Fe-g6b">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -467,7 +467,7 @@
                                         <rect key="frame" x="0.0" y="28" width="320" height="25"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" contentMode="center" tableViewCell="jRp-wl-bqZ" id="O8l-5M-g2G">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="24"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="25"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -498,7 +498,7 @@
         <!--Data-->
         <scene sceneID="v27-s9-PyU">
             <objects>
-                <viewController id="Zqb-iY-gH5" sceneMemberID="viewController">
+                <viewController id="Zqb-iY-gH5" customClass="ExerciseDataViewController" customModule="STiOS" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="XFS-0d-J8B"/>
                         <viewControllerLayoutGuide type="bottom" id="TYY-ld-Jtb"/>
@@ -506,9 +506,32 @@
                     <view key="view" contentMode="scaleToFill" id="eEL-f6-ni0">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Exercise completion:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M0W-xc-hWq">
+                                <rect key="frame" x="16" y="163" width="158" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eJZ-U8-CL2">
+                                <rect key="frame" x="244" y="163" width="0.0" height="0.0"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="eJZ-U8-CL2" secondAttribute="trailing" constant="60" id="5HI-1r-M3j"/>
+                            <constraint firstItem="M0W-xc-hWq" firstAttribute="top" secondItem="XFS-0d-J8B" secondAttribute="bottom" constant="99" id="FrL-5D-fnZ"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="M0W-xc-hWq" secondAttribute="leading" id="LcK-4k-qYR"/>
+                            <constraint firstItem="eJZ-U8-CL2" firstAttribute="top" secondItem="XFS-0d-J8B" secondAttribute="bottom" constant="99" id="cDA-Z1-N3k"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Data" id="0Qh-FE-AyA"/>
+                    <connections>
+                        <outlet property="exerciseCompletionLevel" destination="eJZ-U8-CL2" id="T6x-5U-pwb"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xKa-vZ-CYc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

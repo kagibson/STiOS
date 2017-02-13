@@ -105,15 +105,15 @@ class BTModuleViewController: UIViewController,  UITableViewDataSource, UITableV
     }
     
     
-    func timeout()
+    func connectionTimeout()
     {
         //outputLabel.text = "Connection attempt timed out..."
         if let connectedPeripheral = connectedPeripheral
         {
             centralManager?.cancelPeripheralConnection(connectedPeripheral)
         }
+
         connectionAttemptTimer?.invalidate()
-        scanTimer?.invalidate()
     }
     
     
@@ -122,16 +122,20 @@ class BTModuleViewController: UIViewController,  UITableViewDataSource, UITableV
         
         if let central = centralManager
         {
+            // reset peripheral list
+            peripherals = []
+            self.tableView.reloadData()
             central.scanForPeripherals(withServices: [BLEModuleServiceUUID], options: nil)
             outputLabel.text = "Scanning..."
             print("scanning...")
-            scanTimer = Timer.scheduledTimer(timeInterval: 20, target: self, selector: #selector(BTModuleViewController.timeout), userInfo: nil, repeats: false)
+            scanTimer = Timer.scheduledTimer(timeInterval: 20, target: self, selector: #selector(stopScanning), userInfo: nil, repeats: false)
         }
         
     }
     
     func stopScanning()
     {
+        outputLabel.text = ""
         centralManager?.stopScan()
         scanTimer?.invalidate()
     }
@@ -180,6 +184,7 @@ class BTModuleViewController: UIViewController,  UITableViewDataSource, UITableV
     func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?) {
         
         self.peripherals = []
+        self.tableView.reloadData()
         isConnected = false
         peripheral.delegate = nil
         print("Bluno Board is disconnected")
@@ -294,17 +299,7 @@ class BTModuleViewController: UIViewController,  UITableViewDataSource, UITableV
     // Mark: - Private
     
     func assembleFormatString(_ data: String){
-        
-        /*if (index < 4){ // only storing the first 4 bytes
-            //print("index is \(index)")
-            if (data != "\r\n"){
-                strArr.append(data)
-            }
-        }
-        else{
-            convertToFloat(strArr)
-        } 
-    */
+        // parse stream
         for char in data.characters
         {
             // check for start of formatted stream
@@ -334,6 +329,7 @@ class BTModuleViewController: UIViewController,  UITableViewDataSource, UITableV
     
     func updateSensorDictionary(sensor_str: String)
     {
+        print(sensor_str)
         // split formatted string by delimiters
         let strArr = sensor_str.components(separatedBy: ",")
  
@@ -364,7 +360,21 @@ class BTModuleViewController: UIViewController,  UITableViewDataSource, UITableV
             sensor4Received = true
         }
         
-        
+        if (sensor1Received && sensor2Received && sensor3Received && sensor4Received)
+        {
+            // access tab-shared variables
+            if let tbs = self.tabBarController as? SessionTabBarController
+            {
+                tbs.userSkeleton.updateFromSensors(sensorData: sensorValues)
+                print(tbs.currentExercise?.getPercentComplete()! as Any)
+            }
+            
+            // reset flags
+            sensor1Received = false
+            sensor2Received = false
+            sensor3Received = false
+            sensor4Received = false
+        }
     }
     
     /*func convertToFloat(_ array: [String]){
@@ -397,6 +407,7 @@ class BTModuleViewController: UIViewController,  UITableViewDataSource, UITableV
         if (central?.state == .poweredOn && !isConnected)
         {
             self.startScanning()
+            
         }
             
     }

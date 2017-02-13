@@ -19,6 +19,7 @@
 		484DACF11DFA793E000EFFB6 /* STiOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 484DACF01DFA793E000EFFB6 /* STiOSUITests.swift */; };
 		61B4E72D1C2E8CA845C0AFC8 /* Pods_STiOSUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D9BAEE5F2AEA66E963EA66C /* Pods_STiOSUITests.framework */; };
 		80C51E4D4E0FD4C194A27A93 /* Pods_STiOSTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A48305B080F999B74209310 /* Pods_STiOSTests.framework */; };
+		DD09D7CA1E520FC1001D4091 /* ExerciseDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD09D7C91E520FC1001D4091 /* ExerciseDataViewController.swift */; };
 		DD31DF9C1E0397C400D9F112 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DD31DF9B1E0397C400D9F112 /* GoogleService-Info.plist */; };
 		DD31DFA11E039B6F00D9F112 /* AddNewPatientViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD31DF9D1E039B6F00D9F112 /* AddNewPatientViewController.swift */; };
 		DD31DFA21E039B6F00D9F112 /* PatientListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD31DF9E1E039B6F00D9F112 /* PatientListViewController.swift */; };
@@ -71,6 +72,7 @@
 		9A48305B080F999B74209310 /* Pods_STiOSTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_STiOSTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B50B608218BCFF9B639B1350 /* Pods-STiOSUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-STiOSUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-STiOSUITests/Pods-STiOSUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		CD12A4DFB1E5F9F56E26D187 /* Pods-STiOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-STiOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-STiOS/Pods-STiOS.debug.xcconfig"; sourceTree = "<group>"; };
+		DD09D7C91E520FC1001D4091 /* ExerciseDataViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExerciseDataViewController.swift; sourceTree = "<group>"; };
 		DD31DF9B1E0397C400D9F112 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		DD31DF9D1E039B6F00D9F112 /* AddNewPatientViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddNewPatientViewController.swift; sourceTree = "<group>"; };
 		DD31DF9E1E039B6F00D9F112 /* PatientListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PatientListViewController.swift; sourceTree = "<group>"; };
@@ -149,6 +151,7 @@
 				484DACD01DFA793E000EFFB6 /* art.scnassets */,
 				484DACD21DFA793E000EFFB6 /* GameViewController.swift */,
 				484DACD41DFA793E000EFFB6 /* Main.storyboard */,
+				DD09D7C91E520FC1001D4091 /* ExerciseDataViewController.swift */,
 				484DACD71DFA793E000EFFB6 /* Assets.xcassets */,
 				DD31DF9D1E039B6F00D9F112 /* AddNewPatientViewController.swift */,
 				DD921F591E08B29300F50554 /* Protocols.swift */,
@@ -488,6 +491,7 @@
 				DDA9566D1E359C7D00ABD16D /* ExercisePickerViewController.swift in Sources */,
 				DD31DFA21E039B6F00D9F112 /* PatientListViewController.swift in Sources */,
 				DD31DFA11E039B6F00D9F112 /* AddNewPatientViewController.swift in Sources */,
+				DD09D7CA1E520FC1001D4091 /* ExerciseDataViewController.swift in Sources */,
 				DD31DFA31E039B6F00D9F112 /* RegistrationViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

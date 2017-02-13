@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ExerciseMotionTracker
 
 class ExercisePickerViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
     
@@ -17,6 +18,11 @@ class ExercisePickerViewController: UIViewController, UIPickerViewDataSource, UI
         super.viewDidLoad()
         exercisePicker.dataSource = self
         exercisePicker.delegate = self
+        
+        if let tbs = self.tabBarController as? SessionTabBarController
+        {
+            tbs.currentExercise = BicepCurl(skeleton: tbs.userSkeleton)
+        }
 
     }
 
