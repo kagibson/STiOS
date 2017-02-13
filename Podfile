@@ -9,6 +9,7 @@ target 'STiOS' do
   pod 'Firebase/Core'
   pod 'Firebase/Auth'
   pod 'Firebase/Database'
+  pod 'ExerciseMotionTracker', :git => 'https://github.com/kagibson/exerciseMotionTracker'
 
   target 'STiOSTests' do
     inherit! :search_paths

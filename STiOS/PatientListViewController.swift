@@ -21,6 +21,7 @@ class PatientListViewController: UITableViewController, DismissalDelegate {
     var currentUser: FIRUser!
     
     let SequeAddNewPatientViewController = "AddNewPatientViewController"
+    let SegueTabBarController = "TabBarController"
     let cellIdentifier = "LabelCell"
     
 
@@ -62,7 +63,12 @@ class PatientListViewController: UITableViewController, DismissalDelegate {
         if let vc = segue.destination as? Dismissable
         {
             vc.dismissalDelegate = self
+            if let tbc = segue.destination as? SessionTabBarController
+            {
+                tbc.selectedPatient = self.selectedPatient
+            }
         }
+        
     }
     
     
@@ -93,6 +99,7 @@ class PatientListViewController: UITableViewController, DismissalDelegate {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedPatient = patients[indexPath.row]
+        segueToTabBarController()
     }
 
     // get users from database, create array of User structs, fill in table with user's names
@@ -120,6 +127,11 @@ class PatientListViewController: UITableViewController, DismissalDelegate {
     {
         //self.definesPresentationContext = true
         performSegue(withIdentifier: SequeAddNewPatientViewController, sender: view)
+    }
+    
+    func segueToTabBarController()
+    {
+        performSegue(withIdentifier: SegueTabBarController, sender: view)
     }
     
     // dismiss AddNewPatientViewController and refresh patient list with new entry
