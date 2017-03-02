@@ -15,8 +15,14 @@ class ExerciseDataViewController: UIViewController, ExerciseMonitorDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if let tbs = self.tabBarController as? SessionTabBarController
+        {
+            tbs.currentExercise?.exerciseMonitorDelegate = self
+        }
 
         // Do any additional setup after loading the view.
+        exerciseCompletionLevelText?.text = "/connect BT!"
     }
 
     override func didReceiveMemoryWarning() {
@@ -26,6 +32,7 @@ class ExerciseDataViewController: UIViewController, ExerciseMonitorDelegate {
     
     func completionLevelDidUpdate() {
         
+        print("completionLevelDidUpdate()")
         // display exercise completion level when an update is received
         if let tbs = self.tabBarController as? SessionTabBarController
         {
@@ -33,10 +40,12 @@ class ExerciseDataViewController: UIViewController, ExerciseMonitorDelegate {
             {
                 // convert from per unit to percentage
                 level *= 100
-                exerciseCompletionLevelText?.text = "/level"
+                exerciseCompletionLevelText?.text = "\(level)"
                 
             }
+            print("passed if var level = ...")
         }
+        print("passed if let tbs = ...")
     }
 
     /*
