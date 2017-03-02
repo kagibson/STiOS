@@ -32,7 +32,7 @@ class BTModuleViewController: UIViewController,  UITableViewDataSource, UITableV
     var formatString = ""
     var strArr = [String]()
     var writingToString = false
-    var sensor1Received = false, sensor2Received = false, sensor3Received = false, sensor4Received = false // sensor update flags
+    var sensor0Received = false, sensor1Received = false, sensor2Received = false, sensor3Received = false // sensor update flags
     var sensorValues = [String: Float]()
     
     // UUID and characteristics
@@ -340,7 +340,12 @@ class BTModuleViewController: UIViewController,  UITableViewDataSource, UITableV
         sensorValues[strArr[0]+"z"] = (strArr[4] as NSString).floatValue;
         
         // set sensor flags
-        if (strArr[0] == "s1")
+        if (strArr[0] == "s0")
+        {
+            sensor0Received = true
+        }
+        
+        else if (strArr[0] == "s1")
         {
             sensor1Received = true
         }
@@ -355,25 +360,20 @@ class BTModuleViewController: UIViewController,  UITableViewDataSource, UITableV
             sensor3Received = true
         }
         
-        else if (strArr[0] == "s4")
-        {
-            sensor4Received = true
-        }
-        
-        if (sensor1Received && sensor2Received && sensor3Received && sensor4Received)
+        if (sensor0Received && sensor1Received && sensor2Received && sensor3Received)
         {
             // access tab-shared variables
             if let tbs = self.tabBarController as? SessionTabBarController
             {
                 tbs.userSkeleton.updateFromSensors(sensorData: sensorValues)
-                print(tbs.currentExercise?.getPercentComplete()! as Any)
+                tbs.currentExercise?.updateDelegates()
             }
             
             // reset flags
+            sensor0Received = false
             sensor1Received = false
             sensor2Received = false
             sensor3Received = false
-            sensor4Received = false
         }
     }
     

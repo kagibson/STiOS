@@ -9,14 +9,26 @@
 import UIKit
 import QuartzCore
 import SceneKit
+import ExerciseMotionTracker
 
-class GameViewController: UIViewController {
+// create a new scene
+//let scene = SCNScene(named: "art.scnassets/RightArm.dae")!
+let scene = SCNScene(named:"art.scnassets/FullBodyV2.dae")!
 
-    override func viewDidLoad() {
+class GameViewController: UIViewController, SkeletonDelegate{
+
+    override func viewDidLoad()
+    {
+        if let tbs = self.tabBarController as? SessionTabBarController
+        {
+            print("setting delegate here")
+            tbs.userSkeleton.skeletonDelegate = self
+        }
+        
         super.viewDidLoad()
         
         // create a new scene
-        let scene = SCNScene(named: "art.scnassets/ship.scn")!
+        //let scene = SCNScene(named: "art.scnassets/RightArm.dae")!
         
         // create and add a camera to the scene
         let cameraNode = SCNNode()
@@ -40,11 +52,11 @@ class GameViewController: UIViewController {
         ambientLightNode.light!.color = UIColor.darkGray
         scene.rootNode.addChildNode(ambientLightNode)
         
-        // retrieve the ship node
-        let ship = scene.rootNode.childNode(withName: "ship", recursively: true)!
-        
-        // animate the 3d object
-        ship.runAction(SCNAction.repeatForever(SCNAction.rotateBy(x: 0, y: 2, z: 0, duration: 1)))
+        // retrieve arm node
+//        let foreArm = scene.rootNode.childNode(withName: "foreArm_Right", recursively: true)!
+//        
+//        // animate the 3d object
+//        foreArm.runAction(SCNAction.repeatForever(SCNAction.rotateBy(x: 0, y: 2, z: 0, duration: 1)))
         
         // retrieve the SCNView
         let scnView = self.view as! SCNView
@@ -64,6 +76,28 @@ class GameViewController: UIViewController {
         // add a tap gesture recognizer
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
         scnView.addGestureRecognizer(tapGesture)
+    }
+    
+    public func updateBodyJoints(sensorData: [String : BodyJoint])
+    {
+//        let leftForeArm: BodyJoint = sensorData["leftForearm"]!
+//        var leftBicep: BodyJoint = sensorData["leftBicep"]!
+        
+        // Uncomment these:
+//        let rightForeArm: BodyJoint = sensorData["rightForearm"]!
+//        let rightBicep: BodyJoint = sensorData["rightBicep"]!
+        
+//        print("LeftForeArm:")
+//        print(rightForeArm.orientation.w_)
+//        print(rightForeArm.orientation.x_)
+//        print(rightForeArm.orientation.y_)
+//        print(rightForeArm.orientation.z_)
+        
+//        let RightForeArm = scene.rootNode.childNode(withName: "foreArm_Right", recursively: true)!
+//        RightForeArm.orientation = SCNVector4(x:rightForeArm.orientation.x_, y:rightForeArm.orientation.y_, z:rightForeArm.orientation.z_, w:rightForeArm.orientation.w_)
+//        
+//        let RightBicep = scene.rootNode.childNode(withName:"upperArm_Right", recursively: true)!
+//        RightBicep.orientation = SCNVector4(x:rightBicep.orientation.x_, y:rightBicep.orientation.y_, z:rightBicep.orientation.z_, w:rightBicep.orientation.w_)
     }
     
     func handleTap(_ gestureRecognize: UIGestureRecognizer) {

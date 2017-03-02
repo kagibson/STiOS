@@ -7,10 +7,11 @@
 //
 
 import UIKit
+import ExerciseMotionTracker
 
-class ExerciseDataViewController: UIViewController {
+class ExerciseDataViewController: UIViewController, ExerciseMonitorDelegate {
     
-    @IBOutlet weak var exerciseCompletionLevel: UILabel?
+    @IBOutlet weak var exerciseCompletionLevelText: UILabel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +24,20 @@ class ExerciseDataViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func completionLevelDidUpdate() {
+        
+        // display exercise completion level when an update is received
+        if let tbs = self.tabBarController as? SessionTabBarController
+        {
+            if var level = (tbs.currentExercise?.getPercentComplete())
+            {
+                // convert from per unit to percentage
+                level *= 100
+                exerciseCompletionLevelText?.text = "/level"
+                
+            }
+        }
+    }
 
     /*
     // MARK: - Navigation
