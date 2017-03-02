@@ -31,8 +31,6 @@ class ExerciseDataViewController: UIViewController, ExerciseMonitorDelegate {
     }
     
     func completionLevelDidUpdate() {
-        
-        print("completionLevelDidUpdate()")
         // display exercise completion level when an update is received
         if let tbs = self.tabBarController as? SessionTabBarController
         {
@@ -43,9 +41,7 @@ class ExerciseDataViewController: UIViewController, ExerciseMonitorDelegate {
                 exerciseCompletionLevelText?.text = "\(level)"
                 
             }
-            print("passed if var level = ...")
         }
-        print("passed if let tbs = ...")
     }
 
     /*
