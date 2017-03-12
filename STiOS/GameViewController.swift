@@ -13,7 +13,35 @@ import ExerciseMotionTracker
 
 // create a new scene
 //let scene = SCNScene(named: "art.scnassets/RightArm.dae")!
-let scene = SCNScene(named:"art.scnassets/FullBodyV2.dae")!
+let scene = SCNScene(named:"art.scnassets/fullHumanV2.dae")!
+
+// Arms
+let RightBicep = scene.rootNode.childNode(withName:"upperArm.R", recursively: true)!
+let RightForeArm = scene.rootNode.childNode(withName: "foreArm.R", recursively: true)!
+let LeftBicep = scene.rootNode.childNode(withName:"upperArm.L", recursively: true)!
+let LeftForeArm = scene.rootNode.childNode(withName:"foreArm.L", recursively: true)!
+
+// Legs
+//let RightUpperLeg = scene.rootNode.childNode(withName:"upperLeg.R", recursively: true)!
+//let RightLowerLeg = scene.rootNode.childNode(withName:"lowerLeg.R", recursively: true)!
+//let LeftUpperLeg = scene.rootNode.childNode(withName:"upperLeg.L", recursively: true)!
+//let LeftLowerLeg = scene.rootNode.childNode(withName:"lowerLeg.L", recursively: true)!
+//
+//// Spine
+////let root = scene.rootNode.childNode(withName: "root", recursively: true)!
+//let lowerSpine = scene.rootNode.childNode(withName:"lowerSpine", recursively: true)!
+//let upperSpine = scene.rootNode.childNode(withName: "upperSpine", recursively: true)!
+//let neck = scene.rootNode.childNode(withName:"neck", recursively: true)!
+//let head = scene.rootNode.childNode(withName: "head", recursively: true)!
+
+let init_x = LeftBicep.position.x
+let init_y = LeftBicep.position.y
+let init_z = LeftBicep.position.z
+
+let init_x_1 = LeftForeArm.position.x
+let init_y_1 = LeftForeArm.position.y
+let init_z_1 = LeftForeArm.position.z
+
 
 class GameViewController: UIViewController, SkeletonDelegate{
 
@@ -23,6 +51,24 @@ class GameViewController: UIViewController, SkeletonDelegate{
         {
             print("setting delegate here")
             tbs.userSkeleton.skeletonDelegate = self
+            
+            // "Initial Position" of the model is set up here:
+            
+//            RightBicep.orientation = SCNVector4(x:0, y:0, z:0, w:1)
+//            RightForeArm.orientation = SCNVector4(x:0, y:0, z:0, w:1)
+//            LeftBicep.orientation = SCNVector4(x:0, y:0, z:0, w:1)
+//            LeftForeArm.orientation = SCNVector4(x:0, y:0, z:0, w:1)
+            
+//            RightUpperLeg.orientation = SCNVector4(x:1, y:1, z:1, w:0)
+//            RightLowerLeg.orientation = SCNVector4(x:1, y:1, z:1, w:0)
+//            LeftUpperLeg.orientation = SCNVector4(x:1, y:1, z:1, w:0)
+//            LeftLowerLeg.orientation = SCNVector4(x:1, y:1, z:1, w:0)
+            
+//            head.orientation = SCNVector4(x:0, y:0, z:0, w:1)
+//            neck.orientation = SCNVector4(x:0, y:0, z:0, w:1)
+//            upperSpine.orientation = SCNVector4(x:0, y:0, z:0, w:1)
+//            lowerSpine.orientation = SCNVector4(x:0, y:0, z:0, w:1)
+            //root.orientation = SCNVector4(x:0, y:0, z:0, w:0)
         }
         
         super.viewDidLoad()
@@ -52,12 +98,6 @@ class GameViewController: UIViewController, SkeletonDelegate{
         ambientLightNode.light!.color = UIColor.darkGray
         scene.rootNode.addChildNode(ambientLightNode)
         
-        // retrieve arm node
-//        let foreArm = scene.rootNode.childNode(withName: "foreArm_Right", recursively: true)!
-//        
-//        // animate the 3d object
-//        foreArm.runAction(SCNAction.repeatForever(SCNAction.rotateBy(x: 0, y: 2, z: 0, duration: 1)))
-        
         // retrieve the SCNView
         let scnView = self.view as! SCNView
         
@@ -80,29 +120,50 @@ class GameViewController: UIViewController, SkeletonDelegate{
     
     public func updateBodyJoints(sensorData: [String : BodyJoint])
     {
-//        let leftForeArm: BodyJoint = sensorData["leftForearm"]!
-//        var leftBicep: BodyJoint = sensorData["leftBicep"]!
+        let rightForearm: BodyJoint = sensorData["rightForearm"]!
+        let rightBicep: BodyJoint = sensorData["rightBicep"]!
+        let leftForearm: BodyJoint = sensorData["leftForearm"]!
+        let leftBicep: BodyJoint = sensorData["leftBicep"]!
         
-        // Uncomment these:
-//        let rightForeArm: BodyJoint = sensorData["rightForearm"]!
-//        let rightBicep: BodyJoint = sensorData["rightBicep"]!
+        // Working!!!!!!!!!!!!!!!
         
-//        print("LeftForeArm:")
-//        print(rightForeArm.orientation.w_)
-//        print(rightForeArm.orientation.x_)
-//        print(rightForeArm.orientation.y_)
-//        print(rightForeArm.orientation.z_)
+        RightBicep.orientation = SCNVector4(x:-rightBicep.orientation.z_, y:-rightBicep.orientation.x_, z:rightBicep.orientation.y_, w:rightBicep.orientation.w_)
         
-//        let RightForeArm = scene.rootNode.childNode(withName: "foreArm_Right", recursively: true)!
-//        RightForeArm.orientation = SCNVector4(x:rightForeArm.orientation.x_, y:rightForeArm.orientation.y_, z:rightForeArm.orientation.z_, w:rightForeArm.orientation.w_)
-//        
-//        let RightBicep = scene.rootNode.childNode(withName:"upperArm_Right", recursively: true)!
-//        RightBicep.orientation = SCNVector4(x:rightBicep.orientation.x_, y:rightBicep.orientation.y_, z:rightBicep.orientation.z_, w:rightBicep.orientation.w_)
+//        LeftBicep.orientation = SCNVector4(x:-leftBicep.orientation.x_, y:leftBicep.orientation.z_, z:leftBicep.orientation.y_, w:leftBicep.orientation.w_)
+        
+        RightForeArm.orientation = SCNVector4(x:rightForearm.orientation.x_, y:rightForearm.orientation.z_, z:rightForearm.orientation.y_, w:rightForearm.orientation.w_)
+        
+//        LeftForeArm.orientation = SCNVector4(x:leftForearm.orientation.z_, y:leftForearm.orientation.x_, z:leftForearm.orientation.y_, w:leftForearm.orientation.w_)
     }
     
     func handleTap(_ gestureRecognize: UIGestureRecognizer) {
         // retrieve the SCNView
         let scnView = self.view as! SCNView
+        
+        RightBicep.orientation = SCNVector4(x:0, y:0, z:0, w:1)
+        RightForeArm.orientation = SCNVector4(x:0, y:0, z:0, w:1)
+        LeftBicep.orientation = SCNVector4(x:0, y:0, z:0, w:0.1)
+        LeftForeArm.orientation = SCNVector4(x:0, y:0, z:0, w:1)
+//        
+//        print("init")
+//        print(init_x)
+//        print(init_y)
+//        print(init_z)
+//        print("init_1")
+//        print(init_x_1)
+//        print(init_y_1)
+//        print(init_z_1)
+//        print("LeftBicep")
+//        print(LeftBicep.position.x)
+//        print(LeftBicep.position.y)
+//        print(LeftBicep.position.z)
+//        print("LeftForeArm")
+//        print(LeftForeArm.position.x)
+//        print(LeftForeArm.position.y)
+//        print(LeftForeArm.position.z)
+
+//        LeftBicep.position = SCNVector3Make(0.0612551, -0.174968, -0.646235)
+//        LeftForeArm.position = SCNVector3Make(1.19209e-07, -2.23517e-08, -0.938534)
         
         // check what nodes are tapped
         let p = gestureRecognize.location(in: scnView)
@@ -136,11 +197,11 @@ class GameViewController: UIViewController, SkeletonDelegate{
     }
     
     override var shouldAutorotate: Bool {
-        return true
+        return false
     }
     
     override var prefersStatusBarHidden: Bool {
-        return true
+        return false
     }
     
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
