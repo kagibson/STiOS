@@ -289,7 +289,16 @@ class BTModuleViewController: UIViewController,  UITableViewDataSource, UITableV
         
         if characteristic.uuid == kBlunoDataCharacteristic {
             let value = String(data: characteristic.value!, encoding: String.Encoding.utf8)
-            assembleFormatString(value!)
+            //assembleFormatString(value!)
+            
+            if(value != nil)
+            {
+                self.assembleFormatString(value!)
+            }
+            else
+            {
+                print("crash")
+            }
         }
         
     }
@@ -312,8 +321,11 @@ class BTModuleViewController: UIViewController,  UITableViewDataSource, UITableV
             else if (char == "~")
             {
                 writingToString = false
-                updateSensorDictionary(sensor_str: formatString)
-                formatString = ""
+                if(formatString != "")
+                {
+                    updateSensorDictionary(sensor_str: formatString)
+                    formatString = ""
+                }
             }
             
             else
@@ -329,7 +341,7 @@ class BTModuleViewController: UIViewController,  UITableViewDataSource, UITableV
     
     func updateSensorDictionary(sensor_str: String)
     {
-        print(sensor_str)
+        //print(sensor_str)
         // split formatted string by delimiters
         let strArr = sensor_str.components(separatedBy: ",")
  
