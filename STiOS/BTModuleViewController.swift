@@ -49,7 +49,7 @@ class BTModuleViewController: UIViewController,  UITableViewDataSource, UITableV
 
         //init CBCentralManager and its delegate
         
-        outputLabel.text = "Make sure the device is ON"
+        outputLabel.text = " "
         centralManager = CBCentralManager(delegate: self, queue: nil)
         
         
@@ -135,7 +135,7 @@ class BTModuleViewController: UIViewController,  UITableViewDataSource, UITableV
     
     func stopScanning()
     {
-        outputLabel.text = ""
+        outputLabel.text = "No device found..."
         centralManager?.stopScan()
         scanTimer?.invalidate()
     }
@@ -274,7 +274,7 @@ class BTModuleViewController: UIViewController,  UITableViewDataSource, UITableV
                     
                     // Send notification that Bluetooth is connected and all required characteristics are discovered
                    // self.sendBTServiceNotificationWithIsBluetoothConnected(true)
-                    NSLog("Discovered characteristic: %@", characteristic)
+                   // NSLog("Discovered characteristic: %@", characteristic)
                     
                 }
             }
@@ -402,6 +402,17 @@ class BTModuleViewController: UIViewController,  UITableViewDataSource, UITableV
         self.strArr = []
     } */
 
+    @IBAction func disconnectBTN(_ sender: UIButton) {
+        if (isConnected)
+        {
+            self.clearDevices()
+            outputLabel.text = "Device is now disconnected..."
+            
+        }
+        else{
+            outputLabel.text = "No device to disconnect..."
+        }
+    }
     @IBAction func scanBTN(_ sender: Any) {
         let central = centralManager
         if (central?.state == .poweredOn && !isConnected)
