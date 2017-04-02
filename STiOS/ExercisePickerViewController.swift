@@ -44,4 +44,22 @@ class ExercisePickerViewController: UIViewController, UIPickerViewDataSource, UI
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return exercises[row]
     }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        if let tbs = self.tabBarController as? SessionTabBarController
+        {
+            switch (row)
+            {
+            case 0:
+                tbs.currentExercise = BicepCurl(skeleton: tbs.userSkeleton)
+                break;
+            case 1:
+                break;
+            case 2:
+                break;
+            default:
+                break;
+        }
+        }
+    }
 }
