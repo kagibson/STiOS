@@ -13,8 +13,11 @@ class ExerciseDataViewController: UIViewController, ExerciseMonitorDelegate {
     
     @IBOutlet weak var exerciseCompletionLevelText: UILabel?
     
+    var isRunning: Bool?
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        isRunning = false
         
         if let tbs = self.tabBarController as? SessionTabBarController
         {
@@ -34,24 +37,35 @@ class ExerciseDataViewController: UIViewController, ExerciseMonitorDelegate {
         // display exercise completion level when an update is received
         if let tbs = self.tabBarController as? SessionTabBarController
         {
-            if var level = (tbs.currentExercise?.getPercentComplete())
+            if (isRunning)!
             {
-                // convert from per unit to percentage
-                level *= 100
-                exerciseCompletionLevelText?.text = "\(level)"
+                if let level = (tbs.currentExercise?.getPercentComplete())
+                {
+                    exerciseCompletionLevelText?.text = "\(level)"
                 
+                }
+            }
+            
+            else
+            {
+                exerciseCompletionLevelText?.text = "Press start to begin"
             }
         }
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    
+    @IBAction func startExercise()
+    {
+        if let tbs = self.tabBarController as? SessionTabBarController
+        {
+            tbs.currentExercise?.initAngle()
+        }
+        isRunning = true
     }
-    */
+    
+    @IBAction func stopExercise()
+    {
+        isRunning = false
+    }
+    
 
 }

@@ -389,30 +389,6 @@ class BTModuleViewController: UIViewController,  UITableViewDataSource, UITableV
         }
     }
     
-    /*func convertToFloat(_ array: [String]){
-        
-        var floatArr = [Float]()
-        var arrIndex = 0
-        
-        for string in array {
-            //print("string is \(string)")
-            let myFloat = (string as NSString).floatValue
-            //numberFloatValue = Double(number.floatValue)
-            
-            floatArr.insert(myFloat, at: arrIndex)
-            
-            print("float[\(arrIndex)] is \(floatArr[arrIndex])")
-            arrIndex += 1
-            
-        }
-        resetArray()
-        
-        //return floatArr
-    } */
-    
-    /*func resetArray(){
-        self.strArr = []
-    } */
 
     @IBAction func scanBTN(_ sender: Any) {
         let central = centralManager

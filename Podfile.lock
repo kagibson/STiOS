@@ -52,7 +52,7 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   ExerciseMotionTracker:
-    :commit: 82ec14aae74a653baa545bc0ae268ae8f0372486
+    :commit: b67600fd2239eec0f00d557ce507d46a3e78f33d
     :git: https://github.com/kagibson/exerciseMotionTracker
 
 SPEC CHECKSUMS:
