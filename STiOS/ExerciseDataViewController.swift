@@ -41,7 +41,14 @@ class ExerciseDataViewController: UIViewController, ExerciseMonitorDelegate {
             {
                 if let level = (tbs.currentExercise?.getPercentComplete())
                 {
-                    exerciseCompletionLevelText?.text = "\(level)"
+                    if(level == 666) // error code
+                    {
+                        exerciseCompletionLevelText?.text = "Straighten your arms."
+                    }
+                    else
+                    {
+                        exerciseCompletionLevelText?.text = "\(level)"
+                    }
                 
                 }
             }

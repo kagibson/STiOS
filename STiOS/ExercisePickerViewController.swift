@@ -11,7 +11,8 @@ import ExerciseMotionTracker
 
 class ExercisePickerViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
     
-    let exercises = ["Bicep curl", "Shoulder press", "Chest flies", "Leg extension"];
+    let exercises = ["Bicep curl", "Flyes", "Overhead press", "Row", "Tricep extension"];
+    
     @IBOutlet weak var exercisePicker: UIPickerView!;
     
     override func viewDidLoad() {
@@ -48,18 +49,32 @@ class ExercisePickerViewController: UIViewController, UIPickerViewDataSource, UI
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if let tbs = self.tabBarController as? SessionTabBarController
         {
+            let exerciseDelegate = tbs.currentExercise?.exerciseMonitorDelegate
+            
             switch (row)
             {
             case 0:
                 tbs.currentExercise = BicepCurl(skeleton: tbs.userSkeleton)
                 break;
             case 1:
+                tbs.currentExercise = Fly(skeleton: tbs.userSkeleton)
                 break;
             case 2:
+                tbs.currentExercise = OverheadPress(skeleton: tbs.userSkeleton)
+                break;
+            case 3:
+                tbs.currentExercise = Row(skeleton: tbs.userSkeleton)
+                break;
+            case 4:
+                tbs.currentExercise = TricepExtension(skeleton: tbs.userSkeleton)
                 break;
             default:
+                tbs.currentExercise = BicepCurl(skeleton: tbs.userSkeleton)
                 break;
-        }
+            }
+            
+            tbs.currentExercise?.exerciseMonitorDelegate = exerciseDelegate // connect back to exerciseMonitorDelegate
+            
         }
     }
 }
