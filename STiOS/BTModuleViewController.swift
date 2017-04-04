@@ -183,10 +183,7 @@ class BTModuleViewController: UIViewController,  UITableViewDataSource, UITableV
     
     func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?) {
         
-        self.peripherals = []
-        self.tableView.reloadData()
-        isConnected = false
-        peripheral.delegate = nil
+        clearDevices()
         print("Bluno Board is disconnected")
         outputLabel.text = "Bluno Board is disconnected"
         
@@ -198,8 +195,10 @@ class BTModuleViewController: UIViewController,  UITableViewDataSource, UITableV
     // MARK: - Private
     
     func clearDevices() {
-        //self.bleService = nil
-        self.peripheral = nil
+        self.peripherals = []
+        self.tableView.reloadData()
+        isConnected = false
+        self.peripheral?.delegate = nil
     }
     
     func centralManagerDidUpdateState(_ central: CBCentralManager) {
@@ -401,18 +400,6 @@ class BTModuleViewController: UIViewController,  UITableViewDataSource, UITableV
     /*func resetArray(){
         self.strArr = []
     } */
-
-    @IBAction func disconnectBTN(_ sender: UIButton) {
-        if (isConnected)
-        {
-            self.clearDevices()
-            outputLabel.text = "Device is now disconnected..."
-            
-        }
-        else{
-            outputLabel.text = "No device to disconnect..."
-        }
-    }
     @IBAction func scanBTN(_ sender: Any) {
         let central = centralManager
         if (central?.state == .poweredOn && !isConnected)
