@@ -127,13 +127,13 @@ class GameViewController: UIViewController, SkeletonDelegate{
         
         // Working!!!!!!!!!!!!!!!
         
-        RightBicep.orientation = SCNVector4(x:-rightBicep.orientation.z_, y:-rightBicep.orientation.x_, z:rightBicep.orientation.y_, w:rightBicep.orientation.w_)
+        RightBicep.orientation = SCNVector4(x:-rightBicep.orientation.x_, y:rightBicep.orientation.y_, z:rightBicep.orientation.z_, w:rightBicep.orientation.w_)
         
-//        LeftBicep.orientation = SCNVector4(x:-leftBicep.orientation.x_, y:leftBicep.orientation.z_, z:leftBicep.orientation.y_, w:leftBicep.orientation.w_)
+        LeftBicep.orientation = SCNVector4(x:-leftBicep.orientation.x_, y:leftBicep.orientation.y_, z:leftBicep.orientation.z_, w:leftBicep.orientation.w_)
         
-        RightForeArm.orientation = SCNVector4(x:rightForearm.orientation.x_, y:rightForearm.orientation.z_, z:rightForearm.orientation.y_, w:rightForearm.orientation.w_)
+        RightForeArm.orientation = SCNVector4(x:-rightForearm.orientation.x_, y:rightForearm.orientation.y_, z:rightForearm.orientation.z_, w:rightForearm.orientation.w_)
         
-//        LeftForeArm.orientation = SCNVector4(x:leftForearm.orientation.z_, y:leftForearm.orientation.x_, z:leftForearm.orientation.y_, w:leftForearm.orientation.w_)
+        LeftForeArm.orientation = SCNVector4(x:-leftForearm.orientation.x_, y:leftForearm.orientation.y_, z:leftForearm.orientation.z_, w:leftForearm.orientation.w_)
     }
     
     func handleTap(_ gestureRecognize: UIGestureRecognizer) {
@@ -144,26 +144,6 @@ class GameViewController: UIViewController, SkeletonDelegate{
         RightForeArm.orientation = SCNVector4(x:0, y:0, z:0, w:1)
         LeftBicep.orientation = SCNVector4(x:0, y:0, z:0, w:0.1)
         LeftForeArm.orientation = SCNVector4(x:0, y:0, z:0, w:1)
-//        
-//        print("init")
-//        print(init_x)
-//        print(init_y)
-//        print(init_z)
-//        print("init_1")
-//        print(init_x_1)
-//        print(init_y_1)
-//        print(init_z_1)
-//        print("LeftBicep")
-//        print(LeftBicep.position.x)
-//        print(LeftBicep.position.y)
-//        print(LeftBicep.position.z)
-//        print("LeftForeArm")
-//        print(LeftForeArm.position.x)
-//        print(LeftForeArm.position.y)
-//        print(LeftForeArm.position.z)
-
-//        LeftBicep.position = SCNVector3Make(0.0612551, -0.174968, -0.646235)
-//        LeftForeArm.position = SCNVector3Make(1.19209e-07, -2.23517e-08, -0.938534)
         
         // check what nodes are tapped
         let p = gestureRecognize.location(in: scnView)
